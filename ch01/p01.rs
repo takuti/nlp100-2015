@@ -1,6 +1,6 @@
 fn main() {
     let s = "パタトクカシーー";
-    let mut s_extracted = "".to_string();
+    let mut s_extracted = String::new();
 
     for (i, c) in s.chars().enumerate() {
         if i % 2 == 0 {
