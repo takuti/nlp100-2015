@@ -1,15 +1,6 @@
-import JSON
-
-s = open("../data/jawiki-country.json") do f
-    for l in readlines(f)
-        j = JSON.parse(l)
-        if j["title"] == "イギリス"
-            return j["text"]
-        end
-    end
-end
+include("UK.jl")
 
 regex = r"\[\[Category:(.+)\]\]"
-for l in split(s, "\n")
+for l in split(UK.read(), "\n")
     ismatch(regex, l) && println(replace(l, regex, s"\1"))
 end
