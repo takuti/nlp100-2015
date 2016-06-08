@@ -13,4 +13,31 @@ function read()
     end
 end
 
+function getbasic()
+    d = Dict{UTF8String, UTF8String}()
+    k = ""
+    flg = false
+
+    for l in split(read(), "\n")
+        if ismatch(r"^\{\{基礎情報 国$", l)
+            flg = true
+            continue
+        end
+
+        if flg
+            ismatch(r"^\}\}$", l) && break
+
+            m = match(r"\|(.+)\s\=\s(.+)", l)
+            if m != nothing
+                k, v = m.captures[1], m.captures[2]
+                d[k] = v
+            else
+                d[k] = string(d[k], l)
+            end
+        end
+    end
+
+    d
+end
+
 end
