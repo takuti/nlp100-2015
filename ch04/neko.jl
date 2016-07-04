@@ -29,4 +29,17 @@ function load()
     end
 end
 
+function count()
+    ss = load()
+    freq = Dict{AbstractString,Int64}()
+
+    for s in ss
+        for m in s
+            freq[m["surface"]] = get(freq, m["surface"], 0) + 1
+        end
+    end
+
+    sort(collect(freq), by = tuple -> last(tuple), rev=true)
+end
+
 end
