@@ -1,0 +1,4 @@
+procedure main()
+  s := "stressed"
+  write(reverse(s))
+end
